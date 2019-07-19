@@ -85,7 +85,7 @@ void gpsModule::pullGPGGAData(char *msg)
     //Get some GPGGA Data.*
     do {
     getSerial(msg); 
-    }while(msg[0] == 'E');
+    }while(msg[2] != 'G' && msg[3] != 'G' && msg[4] != 'A');
     
     if (sscanf(msg,"GPGGA,%f,%lf,%c,%lf,%c,%d,%d,%f,%f", &time, &latitude, &NSindicator, &longitude, &EWindicator, &haveLock, &Sats, &HorizontalDilutionOfPrecision, &MeanSeaLevelAltitude) >=1) {
         if (NSindicator == 'S') { //We are in the southern hemi, therefore we need a negative value (is positive from GPS ?)
@@ -108,8 +108,8 @@ void gpsModule::pullGPVTGData(char *msg)
 {
     do {
     getSerial(msg);
-    }while(msg[0] == 'E');
-    
+    }while(msg[2] != 'V' && msg[3] != 'T' && msg[4] != 'G');
+
     if (sscanf(msg,"GPVTG,%f,%c,,%c,%f,%c,%f", &course, &courseRef, &magRef, &knots, &knotsUnits, &kilometers) >=1) {
     } else {
         msg[0] = 'E';
@@ -125,9 +125,10 @@ void gpsModule::pullGPRMCData(char *msg)
 { 
     do {
     getSerial(msg); 
-    }while(msg[0] == 'E');
-    
+    }while(msg[2] != 'R' && msg[3] != 'M' && msg[4] != 'C');
+ 
     if (sscanf(msg,"GPRMC,%f,%c,%lf,%c,%lf,%c,%f,%f,%i", &time, &status, &latitude, &NSindicator, &longitude, &EWindicator, &knots, &courseOverGround, &date) >=1) {
+       
         if (NSindicator == 'S') {
             //We are in the southern hemi, therefore we need a negative value (is positive from GPS ?)
             latitude = latitude * -1;
