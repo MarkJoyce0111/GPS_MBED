@@ -14,3 +14,5 @@ Marks_House,
 
 and in folder on sd card.     
 /mydir/sdtest.txt      
+
+Make sure your coodinates start at the top right and go clockwise round the polygon.       
