@@ -4,7 +4,7 @@ See main.cpp
 
 'sdtest.txt' should be set out as so.
 Location, 
-Latitude, Latitude, Latitude, Latitude etc,
+Latitude, Latitude, Latitude, Latitude etc,\n
 Longatude, Longatude, Longatude, Longatude etc.
 
 for example,
