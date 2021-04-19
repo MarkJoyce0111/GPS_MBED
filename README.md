@@ -1,5 +1,6 @@
 # GPS_MBED
 GPS class and helper demo
+Point In a Polygon. See if device is inside a pre defined shape mapped out using GPS coordinates.
 See main.cpp
 
 'sdtest.txt' should be set out as so.     
